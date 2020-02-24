@@ -33,9 +33,9 @@ INSERT trainer VALUES (7,'Daniel Williams', '1979-07-30', 3, '32PPS11', 'Linux')
 SELECT *
 FROM trainer;
 
-SELECT
-t.trainer_id , t.fullname , d.department_id
-FROM
-trainer AS t
+SELECT 
+t.trainer_id , t.fullname , d.department_id 
+FROM 
+trainer AS t 
 INNER JOIN department AS d ON t.trainer_id = d.department_id
 ORDER BY t.fullname;
