@@ -1,4 +1,4 @@
--- Домашнее задание № 3 (DT_DZ_03)
+-- Домашнее задание № 3 (DT_DZ_03).
 -- Тема: Запросы SELECT, INSERT, UPDATE, DELETE
 
 DROP DATABASE IF EXISTS academy;
