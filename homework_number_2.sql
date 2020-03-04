@@ -4,13 +4,13 @@
 DROP DATABASE IF EXISTS academy;
 CREATE DATABASE academy;
 USE academy;
-DROP TABLE IF EXISTS grоup, departments, faculty, teacher;
+DROP TABLE IF EXISTS grоup, department, faculty, teacher;
 
 CREATE TABLE grоup (
-grоup_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-grоup_name NVARCHAR(10) NOT NULL UNIQUE,
-grоup_year INT CHECK (grоup_year >= 1 AND grоup_year <= 5) NOT NULL,
-grоup_rating INT CHECK (grоup_rating >= 0 AND grоup_rating <= 5) NOT NULL
+    grоup_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name NVARCHAR(10) NOT NULL CHECK (name != '') UNIQUE,
+    year INT CHECK (year >= 1 AND year <= 5) NOT NULL,
+    rating INT CHECK (rating >= 0 AND rating <= 5) NOT NULL
 );
 
 INSERT grоup VALUES (1, 'DJ001', 1, 3);
@@ -22,22 +22,22 @@ INSERT grоup VALUES (NULL, 'BD015',5 , 4 );
 SELECT *
 FROM grоup;
 
-CREATE TABLE departments (
-departments_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-departments_name NVARCHAR(100) NOT NULL UNIQUE,
-departments_financing DOUBLE CHECK (departments_financing >= 0) NOT NULL DEFAULT (0)
+CREATE TABLE department (
+    department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL CHECK (name != '') UNIQUE,
+    financing DECIMAL(15,2) CHECK (financing >= 0) NOT NULL DEFAULT (0)
 );
 
-INSERT departments VALUES (1, 'Engineering', 50000.0);
-INSERT departments VALUES (NULL, 'Biology', 100000.0);
-INSERT departments VALUES (NULL, 'Linguistics', 4000000.5);
+INSERT department VALUES (1, 'Engineering', 50000.0);
+INSERT department VALUES (NULL, 'Biology', 100000.0);
+INSERT department VALUES (NULL, 'Linguistics', 4000000.5);
 
 SELECT *
-FROM departments;
+FROM department;
 
 CREATE TABLE faculty (
-faculty_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-faculty_name NVARCHAR(100) NOT NULL UNIQUE
+    faculty_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name NVARCHAR(100) NOT NULL CHECK (name != '') UNIQUE
 );
 
 INSERT faculty VALUES (1, 'Manufacturing');
@@ -51,12 +51,12 @@ SELECT *
 FROM faculty;
 
 CREATE TABLE teacher (
-teacher_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-teacher_name NVARCHAR (10000) NOT NULL,
-teacher_surname NVARCHAR (10000) NOT NULL,
-teacher_salary DOUBLE CHECK (teacher_salary > 0) NOT NULL,
-teacher_premium DOUBLE CHECK (teacher_premium >= 0) NOT NULL DEFAULT (0),
-teacher_employment_date DATE CHECK (teacher_employment_date >= '1990-01-01') NOT NULL
+    teacher_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name NVARCHAR (10000) NOT NULL CHECK (name != ''),
+    surname NVARCHAR (10000) NOT NULL,
+    salary DECIMAL(15,2) CHECK (salary > 0) NOT NULL,
+    premium DECIMAL(15,2) CHECK (premium >= 0) NOT NULL DEFAULT (0),
+    employment_date DATE CHECK (employment_date >= '1990-01-01') NOT NULL
 );
 
 INSERT teacher VALUES (1, 'Hilary', 'Putnam', 100000.0, 5000.0, '2001-10-03');
