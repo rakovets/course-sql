@@ -1,4 +1,4 @@
--- Домашнее задание № 2 (DT_DZ_02)
+-- Домашнее задание № 2 (DT_DZ_02).
 -- Тема: Основы взаимодействия с MySQL и MySQL WorkBench
 
 DROP DATABASE IF EXISTS academy;
