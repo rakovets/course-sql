@@ -278,3 +278,4 @@ JOIN shop sh on sh.shop_id =s.shop_id
 GROUP BY sh.name;
 
 
+gg
