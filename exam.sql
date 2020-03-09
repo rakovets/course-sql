@@ -200,8 +200,8 @@ WHERE b.name NOT LIKE 'G%' and
  a.name not like  'Troi%' and 
  b.price >11.33 and b.price<56 and 
  s.quantity>=4 and
- c.name NOT LIKE 'Brazil%' 
- and c.name not like 'Mexico%';
+ c.name NOT LIKE 'Brazil%'  and
+ c.name not like 'Mexico%';
 
 #  (8 Task :Показать следующую информацию в два столбца (числа
 # в правом столбце приведены в качестве примера):
@@ -234,4 +234,47 @@ SELECT a.name , a.surname , SUM(b.page) AS 'Summa pages' , COUNT(b.name) as 'Cou
 FROM book b 
 JOIN author a on a.author_id = b.author_id
 GROUP BY a.name;
+
+# (11 Task :Показать книгу тематики «Программирование» с наибольшим количеством страниц.)
+
+SELECT MAX(b.page) as 'Max page' , b.*
+FROM book b
+JOIN theme t on t.theme_id = b.theme_id
+WHERE t.name LIKE 'Horror%';
+
+# (12 Task :Показать среднее количество страниц по каждой тематике,
+# которое не превышает 400.)
+
+SELECT  format(avg(b.page),2) as 'Average page' , t.name
+from book b
+JOIN theme t on t.theme_id = b.theme_id
+GROUP BY t.name;
+
+# (13 Task :Показать сумму страниц по каждой тематике, учитывая
+# только книги с количеством страниц более 400, и чтобы
+# тематики были «Программирование», «Администрирование» и «Дизайн».)
+
+SELECT  SUM(b.page ) as 'Sum page', t.name
+from book b
+JOIN theme t on t.theme_id = b.theme_id
+WHERE t.name in ('Drama','Force') and b.page>400
+GROUP BY t.name;
+
+# (14 Task : Показать информацию о работе магазинов: что, где, кем,
+# когда и в каком количестве было продано.)
+
+SELECT b.name , c.name , s.name , sl.sale_date , sl.quantity
+FROM shop s
+JOIN sale sl on sl.shop_id =s.shop_id
+JOIN countrie c on c.countrie_id = s.countrie_id
+JOIN book b on b.book_id = sl.book_id;
+
+# (15 Task : Показать самый прибыльный магазин.)
+
+SELECT  MAX(s.price - b.price )  as 'Most profit shop : ', sh.*
+from book b 
+JOIN sale s on s.book_id =b.book_id
+JOIN shop sh on sh.shop_id =s.shop_id
+GROUP BY sh.name;
+
 
