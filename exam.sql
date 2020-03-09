@@ -226,3 +226,11 @@ SELECT  t.name , 'Summa pages : ' , SUM(b.page)
 from book b 
 JOIN theme t on t.theme_id = b.book_id
 GROUP BY b.name ;
+
+# (10 Task :Показать количество всех книг и сумму страниц этих книг
+# по каждому из авторов.)
+
+SELECT  'Количество всех книг по автору : '  , a.name , a.surname ,'Summa pages : ' , SUM(b.page) 
+FROM book b 
+JOIN author a on a.author_id = b.author_id
+GROUP BY a.name;
