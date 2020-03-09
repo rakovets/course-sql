@@ -230,7 +230,8 @@ GROUP BY b.name ;
 # (10 Task :Показать количество всех книг и сумму страниц этих книг
 # по каждому из авторов.)
 
-SELECT  'Количество всех книг по автору : '  , a.name , a.surname ,'Summa pages : ' , SUM(b.page) 
+SELECT a.name , a.surname , SUM(b.page) AS 'Summa pages' , COUNT(b.name) as 'Count book'
 FROM book b 
 JOIN author a on a.author_id = b.author_id
 GROUP BY a.name;
+
