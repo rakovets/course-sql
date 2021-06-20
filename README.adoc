@@ -1,1 +1,35 @@
 = course-sql
+
+This project is for the course 'SQL'.
+
+It contains for each theme of this course:
+
+* code examples
+* tasks or set specifications of tasks
+* start SQL scripts
+
+== Themes
+
+|===
+|*Theme*|*Links*
+|Intro.|link:./tasks/intro.adoc[intro.adoc]
+|Data manipulation.|link:./tasks/data-manipulation.adoc[data-manipulation.adoc]
+|Aggregation functions and grouping.|link:./tasks/aggregation-functions-and-grouping.adoc[aggregation-functions-and-grouping.adoc]
+|Multi-tabular databases.|link:./tasks/multi-tabular-databases.adoc[multi-tabular-databases.adoc]
+|Designing relational databases.|link:./tasks/designing-relational-databases.adoc[designing-relational-databases.adoc]
+|Advanced SQL.|link:./tasks/advanced-sql.adoc[advanced-sql.adoc]
+|===
+
+== Project Structure
+
+----
+├── examples
+├── practice
+├── scripts
+└── tasks
+----
+
+== License
+
+The project is released under version 2.0 of the
+link:https://www.gnu.org/licenses/old-licenses/gpl-2.0.html[GNU General Public License].
