@@ -1,0 +1,68 @@
+version: '3.7'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DATABASE:-course_sql}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-12345678}
+    volumes:
+      - postgres:/data/postgres
+      - ./init/postgres:/docker-entrypoint-initdb.d
+    ports:
+      - 5432:5432
+    networks:
+      - postgres
+
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    restart: unless-stopped
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - ${PGADMIN_PORT:-5050}:80
+    networks:
+      - postgres
+
+  mariadb:
+    container_name: mariadb_container
+    image: mariadb
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD:-1234}
+      MARIADB_DATABASE: ${MARIADB_DATABASE:-intro}
+      MARIADB_USER: ${MARIADB_USER:-mariadb}
+      MARIADB_PASSWORD: ${MARIADB_PASSWORD:-1234567}
+    volumes:
+      - ./init/mariadb:/docker-entrypoint-initdb.d
+    ports:
+      - 3306:3306
+    networks:
+      - mariadb
+
+  adminer:
+    container_name: adminer_container
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - 3307:8080
+    networks:
+      - mariadb
+
+networks:
+  postgres:
+    driver: bridge
+  mariadb:
+    driver: bridge
+
+volumes:
+  postgres:
+  pgadmin:

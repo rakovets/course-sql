@@ -14,8 +14,8 @@ It contains for each theme of this course:
 |*Theme*|*Links*
 |Intro.|link:./tasks/intro.adoc[intro.adoc]
 |Data manipulation.|link:./tasks/data-manipulation.adoc[data-manipulation.adoc]
-|Aggregation functions and grouping.|link:./tasks/aggregation-functions-and-grouping.adoc[aggregation-functions-and-grouping.adoc]
 |Multi-tabular databases.|link:./tasks/multi-tabular-databases.adoc[multi-tabular-databases.adoc]
+|Aggregation functions and grouping.|link:./tasks/aggregation-functions-and-grouping.adoc[aggregation-functions-and-grouping.adoc]
 |Designing relational databases.|link:./tasks/designing-relational-databases.adoc[designing-relational-databases.adoc]
 |Advanced SQL.|link:./tasks/advanced-sql.adoc[advanced-sql.adoc]
 |===
@@ -24,6 +24,7 @@ It contains for each theme of this course:
 
 ----
 ├── examples
+├── init
 ├── practice
 ├── scripts
 └── tasks
