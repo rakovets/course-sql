@@ -1,3 +1,12 @@
+-- * Uncomment the line for your RDBMS OR you need to manually set the schema to execute the script
+-- * For MariaDB
+-- USE data_manipulation;
+-- * For PostgreSQL
+-- SET SEARCH_PATH TO data_manipulation;
+
+-- * NOTE:
+-- * `IF EXISTS` - is PostgreSQL/MariaDB dialect
+
 CREATE TABLE months
 (
     month_id INTEGER,

@@ -1,5 +1,6 @@
 -- EXAMPLES
 -- Добавление записи в таблицу
+
 INSERT INTO months
 VALUES (1, 'January', 31);
 
@@ -8,6 +9,7 @@ VALUES (2, 'February', 29);
 
 -- Выборка записей из таблицы
 -- Простая выборка
+
 SELECT *
 FROM characters;
 
@@ -15,6 +17,7 @@ SELECT name, weapon
 FROM characters;
 
 -- Выборка уникальных
+
 SELECT DISTINCT name
 FROM users;
 
@@ -25,6 +28,7 @@ SELECT COUNT(DISTINCT name)
 FROM users;
 
 -- Выборка с условием
+
 SELECT *
 FROM users
 WHERE name = 'Tom';
@@ -53,6 +57,7 @@ WHERE age = 30
   AND (balance > 1000 OR NOT name = 'Tom');
 
 -- Выборка с сортировкой результата
+
 SELECT *
 FROM users
 ORDER BY name;
@@ -66,6 +71,7 @@ FROM users
 ORDER BY name DESC;
 
 -- Выборка с проверками на NULL
+
 SELECT name, phone
 FROM users
 WHERE phone IS NULL;
@@ -75,12 +81,26 @@ FROM users
 WHERE phone IS NOT NULL;
 
 -- Выборка с указанием количества записей в результате
-SELECT *
-FROM users LIMIT 3;
 
 SELECT *
 FROM users
-WHERE balance = 1000 LIMIT 5;
+LIMIT 3;
+
+SELECT *
+FROM users
+WHERE balance = 1000
+LIMIT 5;
+
+SELECT *
+FROM users
+LIMIT 2
+OFFSET 2;
+
+-- SQL:2008 Standard
+SELECT *
+FROM users
+ORDER BY id DESC
+FETCH NEXT 2 ROWS ONLY;
 
 -- WARNING: Oracle Dialect
 SELECT *
